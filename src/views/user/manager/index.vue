@@ -140,6 +140,15 @@ const handleHowHistory = (row: RowData) => {
   row.id && (historySelectedId.value = row.id)
   getHistoryData();
 }
+
+const getStringAddress = (row: UserInfo) => {
+  const pre = (row.areaCode && queryAreaName(row.areaCode)) || []
+  let result = ""
+  pre.forEach(value => {
+    value && (result = result + value)
+  })
+  return result + (row.address || '')
+}
 /**
  * 列定义
  */
@@ -168,12 +177,7 @@ const columns: DataTableColumns<RowData> = [
     align: "center",
     width: 500,
     render: (row: RowData) => {
-      const pre = (row.areaCode && queryAreaName(row.areaCode)) || []
-      let result = ""
-      pre.forEach(value => {
-        value && (result = result + value)
-      })
-      return result + (row.address || '')
+      return getStringAddress(row)
     }
   },
   {
@@ -297,7 +301,7 @@ const handelRevokeBtnClick = () => {
     loading.value = false
   })
 }
-const handelRevokeTo = (id: number|undefined) => {
+const handelRevokeTo = (id: number | undefined) => {
   loading.value = true
   id && revokeTo(id).then(res => {
     message.success("回退成功")
@@ -425,7 +429,7 @@ onMounted(() => {
               <p>姓名： {{ item.name }}</p>
               <p>年龄： {{ item.age }}</p>
               <p>手机： {{ item.phone }}</p>
-              <p>详细地址： {{ item.address }}</p>
+              <p>详细地址： {{ getStringAddress(item) }}</p>
             </div>
             <n-button
                 class="mt-2"
