@@ -1,5 +1,6 @@
 # Vue 3 + TypeScript + Vite + NaiveUI
-
+### 后端仓库
+https://github.com/Code-Agitator/user-manager-server
 ### 结构说明
 * public 公共资源
 * src
