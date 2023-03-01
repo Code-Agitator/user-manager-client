@@ -1,4 +1,4 @@
-import {ConfigEnv, defineConfig} from 'vite'
+import {ConfigEnv, defineConfig, loadEnv} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -8,7 +8,9 @@ import {fileURLToPath, URL} from 'node:url';
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv: ConfigEnv) => {
+    const env = loadEnv(configEnv.mode, process.cwd());
     return {
+        base: env.VITE_PUBLIC_PATH || '',
         server: {
             proxy: {
                 '/api': {
