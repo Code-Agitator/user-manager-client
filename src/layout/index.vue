@@ -10,10 +10,8 @@
     </n-layout-content>
   </n-layout>
 </template>
-<script>
-import AppMain from "@/layout/AppMain.vue";
+<script setup lang="ts">
+import AppMain from '@/layout/AppMain.vue'
 
-export default {
-  components: {AppMain}
-}
+
 </script>

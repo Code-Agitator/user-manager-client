@@ -9,7 +9,7 @@ import areaData from "@/util/lib/address/areas.json";
 import provinceData from "@/util/lib/address/provinces.json";
 import cityData from "@/util/lib/address/citys.json";
 import {CascaderOption} from "naive-ui/es/cascader/src/interface";
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 
 type RowData = UserInfo & {};
 type AddressData = { name: string; code: string; }
@@ -297,7 +297,7 @@ const handelRevokeBtnClick = () => {
     loading.value = false
   })
 }
-const handelRevokeTo = (id: number) => {
+const handelRevokeTo = (id: number|undefined) => {
   loading.value = true
   id && revokeTo(id).then(res => {
     message.success("回退成功")
@@ -420,7 +420,7 @@ onMounted(() => {
           aria-modal="true" closable @close="showHistoryModal=false">
         <n-collapse accordion>
           <n-collapse-item v-for="item of history" key="id"
-                           :title="'版本: '+dayjs(item.createdTime).format('YYYY-MM-DD HH:mm:ss')" :name="item.id">
+                           :title="'版本: '+ dayjs(item.createdTime).format('YYYY-MM-DD HH:mm:ss')" :name="item.id">
             <div>
               <p>姓名： {{ item.name }}</p>
               <p>年龄： {{ item.age }}</p>
