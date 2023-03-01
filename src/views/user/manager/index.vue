@@ -424,7 +424,7 @@ onMounted(() => {
           aria-modal="true" closable @close="showHistoryModal=false">
         <n-collapse accordion>
           <n-collapse-item v-for="item of history" key="id"
-                           :title="'版本: '+ dayjs(item.createdTime).tz("PRC").format('YYYY-MM-DD HH:mm:ss')" :name="item.id">
+                           :title="'版本: '+ dayjs(item.createdTime).tz('PRC').format('YYYY-MM-DD HH:mm:ss')" :name="item.id">
             <div>
               <p>姓名： {{ item.name }}</p>
               <p>年龄： {{ item.age }}</p>
