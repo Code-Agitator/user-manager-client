@@ -389,7 +389,7 @@ onMounted(() => {
             <n-form-item-gi :span="10" label="详细地址">
               <n-cascader
                   v-model:value="model.areaCode"
-                  placeholder="没啥用的值"
+                  placeholder="选择地址"
                   :options="options"
                   check-strategy="child"
                   :show-path="true"
