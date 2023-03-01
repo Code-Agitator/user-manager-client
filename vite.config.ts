@@ -13,10 +13,10 @@ export default defineConfig((configEnv: ConfigEnv) => {
         base: env.VITE_PUBLIC_PATH || '',
         server: {
             proxy: {
-                '/api': {
+                '/service': {
                     target: 'http://localhost:8887/service/',
                     changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/api/, '')
+                    rewrite: (path) => path.replace(/^\/service/, '')
                 }
             }
         },
